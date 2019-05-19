@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run: apt-get update && apt-get install -y cmake
       - run: mkdir -p build && cd build
-      - run: cmake ..
+      - run: cmake ${CMAKE_OPTIONS} -DCMAKE_CXX_FLAGS=${CXX_FLAGS} -DCMAKE_BUILD_TYPE=Coverage -DBUILD_TESTS=ON .. 
       - run: make
 workflows:
   build_and_test:
