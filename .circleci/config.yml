@@ -12,7 +12,7 @@ jobs:
       - run: mkdir -p build && cd build
       - run: cmake -H. -Bbuild
       - run: cmake --build build
-      - run: cd build
+      - run: cd /root/project/build
       - run: make
       
       
