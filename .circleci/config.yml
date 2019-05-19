@@ -10,9 +10,7 @@ jobs:
       - checkout
       - run: apt-get update && apt-get install -y cmake
       - run: mkdir -p build && cd build
-      - run: cmake -H. -Bbuild
-      - run: cmake --build build
-      - run: cd /root/project/build
+      - run: cmake ..
       - run: make
       
       
