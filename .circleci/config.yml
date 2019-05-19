@@ -1,34 +1,20 @@
 # Use the latest 2.1 version of CircleCI pipeline processing engine, see https://circleci.com/docs/2.0/configuration-reference/
 version: 2.1
-
-# Use a package of configuration called an orb, see https://circleci.com/docs/2.0/orb-intro/
-orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.3.1
-
 # Orchestrate or schedule a set of jobs, see https://circleci.com/docs/2.0/workflows/
-workflows:
-  # Name the workflow "Welcome"
-  Welcome:
-    # Run the welcome/run job in its own container
 jobs:
-  build:
+  build_gcc_6:
     docker:
-      - image: "debian:stretch"
+      - image: gcc:6
     steps:
       - checkout
-      - run:
-          name: Installing SUDO
-          command: 'apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*'
-      - run:
-          name: Installing GCC
-          command: 'apt-get update && apt-get install -y gcc g++'
-      - run:
-          name: Install CMAKE
-          command: 'apt-get update && sudo apt-get install -y cmake'
-      -run:
-          name: Run CMAKE
-          command: 'cmake .'
-      -run:
-          name: Run Make
-          commando 'cd build/ && make'
+      - run: mkdir -p build && cd build
+      - run: cmake ..
+      - run: make
+  build_gcc_latest:
+    docker:
+      - image: gcc:latest
+    steps:
+      - checkout
+      - run: mkdir -p build && cd build
+      - run: cmake ..
+      - run: make
