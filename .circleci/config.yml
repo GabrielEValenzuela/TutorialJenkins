@@ -11,7 +11,7 @@ jobs:
       - run: apt-get update && apt-get install -y cmake
       - run: mkdir -p build && cd build
       - run: cmake -H. -Bbuild
-      - run: cmale --build build 
+      - run: cmake --build build 
       
       
 workflows:
