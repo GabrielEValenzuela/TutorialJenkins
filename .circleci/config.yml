@@ -7,7 +7,7 @@ jobs:
       - image: gcc:6
     steps:
       - checkout
-      - run: apt-get update && apt-get install cmake
+      - run: apt-get update && apt-get install -Y cmake
       - run: mkdir -p build && cd build
       - run: cmake ..
       - run: make
