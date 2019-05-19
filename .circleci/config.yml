@@ -18,3 +18,8 @@ jobs:
       - run: mkdir -p build && cd build
       - run: cmake ..
       - run: make
+workflows:
+  build_and_test:
+    jobs:
+      - build_gcc_6
+      - build_gcc_latest
